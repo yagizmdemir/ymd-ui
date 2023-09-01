@@ -1,3 +1,72 @@
+.yd--form-element-outher {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 3px;
+}
+.yd--form-element-outher .yd--custom-label {
+  font-size: 85%;
+}
+
+.yd-fw {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.yd--custom-textfield {
+  padding: 0 11px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  gap: 7px;
+  text-align: left;
+  border: 1px solid #e6e6e6;
+  position: relative;
+  border-radius: 6px;
+  width: inherit;
+  height: 32px;
+}
+.yd--custom-textfield .yd--dropdown-selected-value.placeholder {
+  color: #bdbdbd;
+}
+.yd--input-container {
+  position: relative;
+}
+.yd--input-container .yd--input-abort {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.yd--input-container .yd--input-abort svg {
+  width: 18px;
+  height: 18px;
+}
+.yd--input-container input[type=password] {
+  padding: 0 38px 0 11px;
+}
+
 .yd--dropdown-container {
   text-align: left;
   border: 1px solid #e6e6e6;
@@ -7,11 +76,6 @@
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-}
-.yd--dropdown-container.yd-fw {
-  width: -webkit-fill-available;
-  width: -moz-available;
-  width: fill-available;
 }
 .yd--dropdown-container .yd--dropdown-input {
   padding: 7px 11px;
@@ -30,8 +94,19 @@
           user-select: none;
   gap: 7px;
 }
-.yd--dropdown-container .yd--dropdown-input .dropdown-selected-value.placeholder {
+.yd--dropdown-container .yd--dropdown-input .yd--dropdown-selected-value.placeholder {
   color: #bdbdbd;
+}
+.yd--dropdown-container .yd--dropdown-tool {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .yd--dropdown-container .yd--dropdown-tool svg {
   -webkit-transition: all 0.2s ease-in-out;
@@ -100,9 +175,13 @@
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 5px;
+  padding: 5px 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  height: 32px;
+}
+.yd--dropdown-container .yd--search-box input:focus {
+  outline: none;
 }
 .yd--dropdown-container .yd--dropdown-tags {
   display: -webkit-box;

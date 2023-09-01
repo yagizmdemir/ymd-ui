@@ -1,0 +1,36 @@
+.yd- {
+    &-custom-textfield {
+        padding: 0 11px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        user-select: none;
+        gap: 7px;
+        text-align: left;
+        border: 1px solid #e6e6e6;
+        position: relative;
+        border-radius: 6px;
+        width: inherit;
+        height: 32px;
+        .yd--dropdown-selected-value {
+            &.placeholder {
+                color: #bdbdbd;
+            }
+        }
+    }
+    &-input-container {
+        position: relative;
+        .yd--input-abort {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        input[type="password"] {
+            padding: 0 38px 0 11px;
+        }
+    }
+}

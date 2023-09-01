@@ -1,30 +1,10 @@
-import React, { HTMLAttributes, useEffect, useRef, useState, RefObject } from 'react';
+import React, { useEffect, useRef, useState, RefObject } from 'react';
+import { IDropdownOption, IDropdownProps } from '../../interfaces/custom-select.interface';
 
-export interface IDropdownOption {
-    label: string;
-    value: string | number;
-}
-
-interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
-    name?: string;
-    label?: string;
-    className?: string;
-    placeHolder?: string;
-    isMulti?: boolean;
-    required?: boolean;
-    fullWidth?: boolean;
-    isOpen?: boolean;
-    isSearchable?: boolean;
-    align?: string;
-    options: IDropdownOption[];
-    onChange: React.FormEventHandler<HTMLDivElement>
-}
-
-// export const CustomSelect = ({ name, className, placeHolder, isMulti, required, fullWidth, isOpen, isSearchable, align, options, label, onChange }: IDropdownProps) => {
-export const CustomSelect = ({ placeHolder, isMulti, isSearchable, align, options, onChange, fullWidth }: IDropdownProps) => {
+export const CustomSelect = ({ placeholder, isMulti, isSearchable, align, options, onChange, fullWidth, className, label, defaultValue }: IDropdownProps) => {
 
     const [showMenu, setShowMenu] = useState<boolean>(false);
-    const [selectedValue, setSelectedValue] = useState<IDropdownOption[] | any>(isMulti ? [] : null);
+    const [selectedValue, setSelectedValue] = useState<IDropdownOption[] | any>(defaultValue ? options.filter((d: IDropdownOption) => d.value === defaultValue)[0] : (isMulti ? [] : null));
     const [searchValue, setSearchValue] = useState("");
     const searchRef: RefObject<HTMLInputElement> = useRef(null);
     const inputRef: RefObject<HTMLDivElement> = useRef(null);
@@ -49,9 +29,9 @@ export const CustomSelect = ({ placeHolder, isMulti, isSearchable, align, option
         };
     });
 
-    const Icon = (isOpen: any) => {
+    const Icon = () => {
         return (
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="#222" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className={isOpen ? 'translate' : ''}>
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="#222" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className={showMenu ? 'translate' : ''}>
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
         );
@@ -128,7 +108,7 @@ export const CustomSelect = ({ placeHolder, isMulti, isSearchable, align, option
 
     const getDisplay = () => {
         if (!selectedValue || selectedValue.length === 0) {
-            return placeHolder;
+            return placeholder;
         }
         if (isMulti) {
             return (
@@ -150,36 +130,41 @@ export const CustomSelect = ({ placeHolder, isMulti, isSearchable, align, option
     };
 
     return (
-        <div className={`yd--dropdown-container ${fullWidth ? 'yd-fw' : ''}`}>
+        <div className={`yd--form-element-outher ${className ? className : ''} ${fullWidth ? 'yd-fw' : ''}`}>
+            {
+                label ? <span className='yd--custom-label'>{label}</span> : null
+            }
+            <div className={`yd--dropdown-container`}>
 
-            <div ref={inputRef} onClick={handleInputClick} className="yd--dropdown-input">
-                <div className={`yd--dropdown-selected-value ${!selectedValue || selectedValue.length === 0 ? 'placeholder' : ''}`}>{getDisplay()}</div>
-                <div className="yd--dropdown-tools">
-                    <div className="yd--dropdown-tool">
-                        <Icon isOpen={showMenu} />
+                <div ref={inputRef} onClick={handleInputClick} className="yd--dropdown-input">
+                    <div className={`yd--dropdown-selected-value ${!selectedValue || selectedValue.length === 0 ? 'placeholder' : ''}`}>{getDisplay()}</div>
+                    <div className="yd--dropdown-tools">
+                        <div className="yd--dropdown-tool">
+                            <Icon />
+                        </div>
                     </div>
                 </div>
+                {
+                    showMenu && (
+                        <div className={`yd--dropdown-menu alignment--${align || 'auto'}`}>
+                            {
+                                isSearchable && (
+                                    <div className="yd--search-box">
+                                        <input className="yd--form-control" onChange={onSearch} value={searchValue} ref={searchRef} />
+                                    </div>
+                                )
+                            }
+                            {
+                                getOptions().map((option) => (
+                                    <div onClick={() => onItemClick(option)} key={option.value} className={`yd--dropdown-item ${isSelected(option) && "selected"}`} >
+                                        {option.label}
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    )
+                }
             </div>
-            {
-                showMenu && (
-                    <div className={`yd--dropdown-menu alignment--${align || 'auto'}`}>
-                        {
-                            isSearchable && (
-                                <div className="yd--search-box">
-                                    <input className="yd--form-control" onChange={onSearch} value={searchValue} ref={searchRef} />
-                                </div>
-                            )
-                        }
-                        {
-                            getOptions().map((option) => (
-                                <div onClick={() => onItemClick(option)} key={option.value} className={`yd--dropdown-item ${isSelected(option) && "selected"}`} >
-                                    {option.label}
-                                </div>
-                            ))
-                        }
-                    </div>
-                )
-            }
         </div>
     );
 
@@ -188,7 +173,7 @@ export const CustomSelect = ({ placeHolder, isMulti, isSearchable, align, option
 CustomSelect.defaultProps = {
     name: '',
     className: '',
-    placeHolder: '',
+    placeholder: '',
     isMulti: false,
     required: false,
     fullWidth: false,

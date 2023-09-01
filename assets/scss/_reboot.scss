@@ -1,0 +1,15 @@
+.yd--form-element-outher {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    .yd--custom-label {
+        font-size: 85%;
+    }
+}
+.yd-fw {
+    width: fill-available;
+}
+.pointer {
+    cursor: pointer;
+}

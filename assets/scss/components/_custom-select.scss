@@ -5,9 +5,6 @@
     border-radius: 6px;
     cursor: pointer;
     width: max-content;
-    &.yd-fw {
-        width: fill-available;
-    }
     .yd- {
         &-dropdown-input {
             padding: 7px 11px;
@@ -16,13 +13,16 @@
             justify-content: space-between;
             user-select: none;
             gap: 7px;
-            .dropdown-selected-value {
+            .yd--dropdown-selected-value {
                 &.placeholder {
                     color: #bdbdbd;
                 }
             }
         }
         &-dropdown-tool {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             svg {
                 transition: all 0.2s ease-in-out;
                 &.translate {
@@ -81,9 +81,13 @@
             input {
                 width: 100%;
                 box-sizing: border-box;
-                padding: 5px;
+                padding: 5px 8px;
                 border: 1px solid #ccc;
                 border-radius: 5px;
+                height: 32px;
+                &:focus {
+                    outline: none;
+                }
             }
         }
         &-dropdown-tags {
