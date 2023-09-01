@@ -1,11 +1,13 @@
 {
   "name": "ymd-ui",
   "author": "Yağız Mehmet Demir <yagizmdemir@gmail.com>",
-  "version": "1.0.10",
+  "version": "1.0.19",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/ui.esm.js",
+  "repository": "https://github.com/yagizmdemir/ymd-ui",
+  "homepage": "https://github.com/yagizmdemir/ymd-ui#readme",
   "files": [
     "dist",
     "src"

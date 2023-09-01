@@ -31,7 +31,6 @@ module.exports = {
     config.plugins.push(
       copy({
         targets: [
-          { src: 'assets/scss/**', dest: 'dist/scss' },
           { src: 'assets/css/*', dest: 'dist/css' },
         ],
       })
