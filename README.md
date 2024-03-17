@@ -47,10 +47,19 @@ import { Button } from "ymd-ui";
 </Button>
 ```
 
-Import required reactstrap components within ```src/App.js``` file or your custom component files:
+### Container, Grid & GridItem 
 
 ```js
-import { CustomTextField } from 'ymd-ui';
+import { Container, Grid, GridItem } from "ymd-ui";
+
+<Container>
+    <Grid>
+        <GridItem col={12} sm={12} md={6} lg={4}> Col 1 </GridItem>
+        <GridItem col={12} sm={12} md={6} lg={4}> Col 2 </GridItem>
+        <GridItem col={12} sm={12} md={6} lg={4}> Col 3 </GridItem>
+        <GridItem col={12} sm={12} md={6} lg={4}> Col 4 </GridItem>
+    </Grid>
+</Container>
 ```
 
 Now you are ready to use the imported YMD UI components within your component hierarchy defined in the render method.
