@@ -1,0 +1,32 @@
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+@each $key, $value in $typography {
+    $min: map-get($value, min);
+    $preferred: map-get($value, preferred);
+    $max: map-get($value, max);
+
+    #{$key} {
+        font-size: clamp(#{$min}, #{$preferred}, #{$max});
+        @if map-has-key($value, "lead") {
+            &.lead {
+                font-size: clamp(
+                    map-get($value, lead, min),
+                    #{(map-get($value, lead, min) + map-get($value, lead, preferred)) / 2},
+                    map-get($value, lead, max)
+                );
+            }
+        }
+
+        @if map-has-key($value, "sm") {
+            &.sm {
+                font-size: clamp(
+                    map-get($value, sm, min),
+                    #{(map-get($value, sm, min) + map-get($value, sm, preferred)) / 2},
+                    map-get($value, sm, max)
+                );
+            }
+        }
+    }
+}

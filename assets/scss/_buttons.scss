@@ -1,0 +1,135 @@
+.ymd-btn {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0px;
+    border: 0px;
+    margin: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    font-family: $font-family;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 6px 16px;
+    border-radius: $radius;
+    overflow: hidden;
+    background-color: transparent;
+    transition:
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    &.ymd-fw {
+        width: 100%;
+        flex: 1;
+    }
+    &-small-size {
+        font-size: 0.8125rem;
+        line-height: 1.75;
+        padding: 4px 10px;
+    }
+    &-medium-size {
+        font-size: 0.875rem;
+        line-height: 1.75;
+        padding: 6px 16px;
+    }
+    &-large-size {
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        padding: 8px 22px;
+    }
+    .ymd-droplet-container {
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        z-index: 0;
+        inset: 0px;
+        border-radius: inherit;
+        .ymd-droplet {
+            opacity: 0.5;
+            display: block;
+            width: 1%;
+            height: auto;
+            aspect-ratio: 1;
+            transform: scale(0);
+            border-radius: 50%;
+            position: absolute;
+            border-radius: 50%;
+            animation: btn-droplet-animation 400ms linear;
+        }
+    }
+    &.ymd-filled {
+        @each $color-name, $color-values in $colors {
+            &.color-#{$color-name} {
+                box-shadow:
+                    rgba(map-get($colors, $color-name, main), 0.2) 0px 3px 1px -2px,
+                    rgba(map-get($colors, $color-name, main), 0.14) 0px 2px 2px 0px,
+                    rgba(map-get($colors, $color-name, main), 0.12) 0px 1px 5px 0px;
+                background-color: rgba(map-get($colors, $color-name, main), 0.87);
+                color: map-get($colors, $color-name, contrast);
+                .ymd-droplet {
+                    background-color: map-get($colors, $color-name, contrast);
+                }
+                &:hover {
+                    background-color: rgba(map-get($colors, $color-name, main), 1);
+                }
+            }
+        }
+    }
+    &.ymd-gradient {
+        @each $color-name, $color-values in $colors {
+            &.color-#{$color-name} {
+                box-shadow:
+                    rgba(map-get($colors, $color-name, main), 0.2) 0px 3px 1px -2px,
+                    rgba(map-get($colors, $color-name, main), 0.14) 0px 2px 2px 0px,
+                    rgba(map-get($colors, $color-name, main), 0.12) 0px 1px 5px 0px;
+                color: rgba(map-get($colors, $color-name, main), 0.87);
+                background: map-get($colors, $color-name, gradient);
+                color: map-get($colors, $color-name, contrast);
+                .ymd-droplet {
+                    background-color: map-get($colors, $color-name, contrast);
+                }
+            }
+        }
+    }
+    &.ymd-text {
+        @each $color-name, $color-values in $colors {
+            &.color-#{$color-name} {
+                color: map-get($colors, $color-name, main);
+                .ymd-droplet {
+                    background-color: map-get($colors, $color-name, main);
+                }
+                &:hover {
+                    background-color: rgba(map-get($colors, $color-name, main), 0.07);
+                }
+            }
+        }
+    }
+    &.ymd-outlined {
+        @each $color-name, $color-values in $colors {
+            &.color-#{$color-name} {
+                border: 1px solid rgba(map-get($colors, $color-name, main), 0.5);
+                color: map-get($colors, $color-name, main);
+                .ymd-droplet {
+                    background-color: map-get($colors, $color-name, main);
+                }
+                &:hover {
+                    border: 1px solid rgba(map-get($colors, $color-name, main), 1);
+                    background-color: rgba(map-get($colors, $color-name, main), 0.08);
+                }
+            }
+        }
+    }
+}

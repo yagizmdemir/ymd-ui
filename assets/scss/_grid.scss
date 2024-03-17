@@ -1,0 +1,78 @@
+.ymd-container {
+    width: 100%;
+    max-width: 1440px;
+    padding-right: calc(#{map-get($row-gap, desktop)}px * 0.75);
+    padding-left: calc(#{map-get($row-gap, desktop)}px * 0.75);
+    margin-right: auto;
+    margin-left: auto;
+}
+.ymd-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1px * map-get($row-gap, desktop);
+    margin-left: -1px * map-get($row-gap, desktop);
+    row-gap: #{map-get($row-gap, desktop)}px;
+}
+.ymd-col {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right:calc(#{map-get($row-gap, desktop)}px *  0.75);
+    padding-left: calc(#{map-get($row-gap, desktop)}px *  0.75);
+}
+
+@for $i from 1 through $columns {
+    .ymd-col-#{$i} {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        max-width: percentage($i / $columns);
+    }
+}
+
+@mixin make-columns($breakpoint, $collar-prefix) {
+    $gap: map-get($row-gap, $breakpoint);
+    $prefix: "";
+
+    @if $collar-prefix == "lg" {
+        $prefix: "";
+    } @else if $collar-prefix == "md" {
+        $prefix: "tablet-";
+    } @else if $collar-prefix == "sm" {
+        $prefix: "mobile-";
+    }
+
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}px) {
+        .ymd-row {
+            margin-right: calc(-#{map-get($row-gap, $breakpoint)}px * 0.75);
+            margin-left: calc(-#{map-get($row-gap, $breakpoint)}px * 0.75);
+            row-gap: #{map-get($row-gap, $breakpoint)}px;
+        }
+        .ymd-col {
+            padding-right: calc(#{map-get($row-gap, $breakpoint)}px *  0.5);
+            padding-left: calc(#{map-get($row-gap, $breakpoint)}px *  0.5);
+        }
+        @for $i from 1 through $columns {
+            .ymd-col-#{$collar-prefix}-#{$i} {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 auto;
+                flex: 0 0 auto;
+                max-width: percentage($i / $columns);
+            }
+        }
+    }
+}
+
+@each $breakpoint, $value in $breakpoints {
+    $prefix: "";
+    @if $breakpoint == "desktop" {
+        $prefix: "lg";
+    } @else if $breakpoint == "tablet" {
+        $prefix: "md";
+    } @else if $breakpoint == "mobile" {
+        $prefix: "sm";
+    }
+
+    @include make-columns($breakpoint, $prefix);
+}
+

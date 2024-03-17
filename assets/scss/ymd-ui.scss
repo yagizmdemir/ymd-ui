@@ -1,3 +1,9 @@
-@import 'reboot';
-@import 'components/custom-text-field';
-@import 'components/custom-select';
+@import "variables";
+@import "keyframes";
+@import "reset";
+@import "typography";
+@import "colors";
+@import "grid";
+
+//Components
+@import 'buttons';

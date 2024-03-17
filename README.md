@@ -1,15 +1,18 @@
+#### \*\*This library on beta version
+
 ## Getting Started
+
 Follow the [create-react-app instructions](https://create-react-app.dev/docs/getting-started) to get started and then follow the [commands below for YMD UI](#adding-ymd-ui).
 
 ### Create React App
 
- ```
+```
 npx create-react-app my-app
 cd my-app/
 npm start
-
 ```
-or,  if npx (Node >= 6 and npm >= 5.2 ) not available 
+
+or, if npx (Node >= 6 and npm >= 5.2 ) not available
 
 ```
 npm install -g create-react-app
@@ -17,90 +20,325 @@ npm install -g create-react-app
 create-react-app my-app
 cd my-app/
 npm start
-``` 
+```
 
-Then open [http://localhost:3000/](http://localhost:3000/) to see your app. The initial structure of your app is setup. Next, let's [add reactstrap and bootstrap](#adding-ymd-ui).
+Then open [http://localhost:3000/](http://localhost:3000/) to see your app. The initial structure of your app is setup. Next, let's [add YMD UI](#adding-ymd-ui).
 
 ### Adding YMD UI
 
 Install YMD UI from NPM:
 
 ```
-npm i ymd-ui
+npm install --save ymd-ui
 ```
 
-Import YMD UI CSS in the ```src/index.js``` file:
+Import YMD UI SCSS in the `src/index.js` file:
 
 ```js
-import 'ymd-ui/dist/css/ymd-ui.css'
+import 'ymd-ui/dist/css/ymd-ui.scss';
 ```
 
-Import required reactstrap components within ```src/App.js``` file or your custom component files:
+Import required YMD UI components within `src/App.js` file or your custom component files:
+
+### Button
 
 ```js
-import { CustomTextField } from 'ymd-ui';
+import { Button } from 'ymd-ui';
+
+<Button
+  type="button"
+  color="primary"
+  variant="text"
+  size="medium"
+  fullWidth
+  href="/about"
+  onClick={() => {
+    console.log('Hello World!');
+  }}
+>
+  My Button
+</Button>;
+```
+
+#### Props
+
+```md
+- className: string
+- style: object
+- children: React.ReactNode
+- variant: string ('text' | 'filled' | 'outlined')
+- color: string ('primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'body')
+- size: string ('medium' | 'small' | 'large')
+- fullWidth: boolean
+- type: string ('button' | 'submit' | 'reset')
+- onClick: function
+- href: string
+```
+
+---
+
+### Container, Grid & GridItem
+
+```js
+import { Container, Grid, GridItem } from 'ymd-ui';
+
+<Container>
+  <Grid>
+    <GridItem col={12} sm={12} md={6} lg={4}>
+      Col 1
+    </GridItem>
+    <GridItem col={12} sm={12} md={6} lg={4}>
+      Col 2
+    </GridItem>
+    <GridItem col={12} sm={12} md={6} lg={4}>
+      Col 3
+    </GridItem>
+    <GridItem col={12} sm={12} md={6} lg={4}>
+      Col 4
+    </GridItem>
+  </Grid>
+</Container>;
+```
+
+---
+
+### From Elements
+
+All form elements accept the following props. In addition, some elements have their own specific props. These props are listed under their respective headings.
+
+```md
+- name: string
+- label: string
+- helperText: string
+- onChange: function
+- onBlur: function
+- value: string
+- placeholder: string
+- pattern: string
+```
+
+#### Basic Input
+
+```js
+import React, { useState } from 'react';
+import { CustomInput } from 'ymd-ui';
+
+const [value, setValue] = useState('');
+
+<CustomInput
+  name={'custom_input'}
+  label={'Custom Input'}
+  helperText={'Custom Input Helper Text'}
+  onChange={(e) => setValue(e.target.value)}
+  onBlur={(e) => console.log(e.target.value)}
+  value={value}
+  placeholder={'I am placeholder'}
+  type={'text'}
+  pattern={'[a-Z]9'}
+/>;
+```
+
+#### Color Input
+
+```js
+import React, { useState } from 'react';
+import { CustomColor } from 'ymd-ui';
+
+const [value, setValue] = useState('');
+
+<CustomColor
+  name={'color_input'}
+  label={'Color Input'}
+  helperText={'Color Input Helper Text'}
+  onChange={(e) => setValue(e.target.value)}
+  onBlur={(e) => console.log(e.target.value)}
+  value={value}
+  pattern={'[a-Z]{9}'}
+/>;
+```
+
+#### Password Input
+
+```js
+import React, { useState } from 'react';
+import { CustomPassword } from 'ymd-ui';
+
+const [value, setValue] = useState('');
+
+<CustomPassword
+  name={'password_input'}
+  label={'Password'}
+  helperText={<a href="/forget-password">Forget Password?</a>}
+  onChange={(e) => setValue(e.target.value)}
+  onBlur={(e) => console.log(e.target.value)}
+  value={value}
+  placeholder={'•••••••••'}
+/>;
+```
+
+#### Phone Input
+
+```js
+import React, { useState } from 'react';
+import { CustomPhone } from 'ymd-ui';
+
+const [value, setValue] = useState('');
+
+<CustomPhone
+  name={'phone_input'}
+  label={'Phone'}
+  onChange={(e) => setValue(e.target.value)}
+  onBlur={(e) => console.log(e.target.value)}
+  value={value}
+  placeholder={'+90 555 555 __ __'}
+  pattern={'+90 [0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}'}
+/>;
+```
+
+#### Checkbox
+
+Checkbox has it own props. These are;
+
+```md
+- name: string
+- label: string
+- helperText: string
+- onChange: function
+- value: string
+- options: [
+    {
+        label: string
+        value: string
+        checked: boolean
+    }
+  ];
+```
+
+```js
+import React, { useState } from 'react';
+import { CustomCheckbox } from 'ymd-ui';
+
+const [value, setValue] = useState();
+
+<CustomCheckbox
+  name={'checkbox'}
+  label={'Checkbox'}
+  value={value}
+  onChange={(e) => console.log(e.value)}
+  options={[
+    {
+      label: 'Checkbox 1',
+      value: 'check_1',
+      checked: false,
+    },
+    {
+      label: 'Checkbox 2',
+      value: 'check_2',
+      checked: true,
+    },
+  ]}
+/>;
+```
+
+#### Radio
+
+Radio has it own props. These are;
+
+```md
+- name: string
+- label: string
+- helperText: string
+- onChange: function
+- value: string
+- options: [
+    {
+        label: string
+        value: string
+        checked: boolean
+    }
+  ];
+```
+
+```js
+import React, { useState } from 'react';
+import { CustomRadio } from 'ymd-ui';
+
+const [value, setValue] = useState();
+
+<CustomRadio
+  name={'radio'}
+  label={'Radio'}
+  value={value}
+  onChange={(e) => console.log(e.value)}
+  options={[
+    {
+      label: 'Radio 1',
+      value: 'option_1',
+      checked: false,
+    },
+    {
+      label: 'Radio 2',
+      value: 'option_2',
+      checked: true,
+    },
+  ]}
+/>;
+```
+
+#### Select
+
+Select has it own props. These are;
+
+```md
+- placeHolder: string
+- options: [
+    {
+        value: string;
+        label: string;
+    }
+  ]
+- isMulti: boolean
+- isSearchable: boolean
+- onChange: function;
+- align: string
+```
+
+```js
+import React, { useState } from 'react';
+import { CustomSelect } from 'ymd-ui';
+
+const [options, setOptions] = useState([
+    {
+      label: "Option 1",
+      value: "opt1",
+    },
+    {
+      label: "Option 2",
+      value: "opt2",
+    },
+    {
+      label: "Option 3",
+      value: "opt3",
+    },
+])
+
+const handleChangeSelect = (e) => {
+    console.log(e)
+}
+
+<CustomSelect
+    options={options}
+    placeHolder='Please select...'
+    onChange={(e) => handleChangeSelect(e)}
+    align='buttom'
+    isSearchable
+    isMulti
+/>;
 ```
 
 Now you are ready to use the imported YMD UI components within your component hierarchy defined in the render method.
-<!-- 
-## About the Project
-
-This library contains React Bootstrap components that favor composition and control. The library does not depend on jQuery or Bootstrap javascript. However, [Poppers.js](https://popper.js.org/) via [react-popper](https://github.com/popperjs/react-popper) is relied upon for advanced positioning of content like Tooltips, Popovers, and auto-flipping Dropdowns.
-
-There are a few core concepts to understand in order to make the most out of this library.
-
-1. Your content is expected to be composed via props.children rather than using named props to pass in Components.
-
-    ```js
-    // Content passed in via props
-    const Example = (props) => {
-      return (
-        <p>This is a tooltip <TooltipTrigger tooltip={TooltipContent}>example</TooltipTrigger>!</p>
-      );
-    }
-
-    // Content passed in as children (Preferred)
-    const PreferredExample = (props) => {
-      return (
-        <p>
-          This is a <a href="#" id="TooltipExample">tooltip</a> example.
-          <Tooltip target="TooltipExample">
-            <TooltipContent/>
-          </Tooltip>
-        </p>
-      );
-    }
-    ```
-
-2. Attributes in this library are used to pass in state, conveniently apply modifier classes, enable advanced functionality (like tether), or automatically include non-content based elements.
-
-    Examples:
-
-    - `isOpen` - current state for items like dropdown, popover, tooltip
-    - `toggle` - callback for toggling `isOpen` in the controlling component
-    - `color` - applies color classes, ex: `<Button color="danger"/>`
-    - `size` - for controlling size classes. ex: `<Button size="sm"/>`
-    - `tag` - customize component output by passing in an element name or Component
-    - boolean based props (attributes) when possible for alternative style classes or `visually-hidden` content -->
-
 
 ### Want to contribute?
+
 You can read and follow our [CONTRIBUTING.md](CONTRIBUTING.md) and report it using
 [GitHub Issues](https://github.com/yagizmdemir/ymd-ui/issues)! for reporting bugs, suggesting enhancements, bugfixes, new features and extras are welcome.
-
-
-## Contributors ✨
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<table>
-  <tbody>
-    <tr>
-      <td align="center"><a href="https://yagizmdemir.com/"><img src="https://avatars.githubusercontent.com/u/87898868?v=4?s=100" width="100px;" alt="Yağız Mehmet Demir"/><br /><sub><b>Yağız Mehmet Demir</b></sub></a><br /><a href="#infra-yagizmdemir" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/yagizmdemir/ymd-ui/commits?author=yagizmdemir" title="Code">💻</a> <a href="https://github.com/yagizmdemir/ymd-ui/issues?q=author%3Ayagizmdemir" title="Bug reports">🐛</a> <a href="https://github.com/yagizmdemir/ymd-ui/commits?author=yagizmdemir" title="Documentation">📖</a> <a href="#example-yagizmdemir" title="Examples">💡</a> <a href="#maintenance-yagizmdemir" title="Maintenance">🚧</a> <a href="https://github.com/yagizmdemir/ymd-ui/commits?author=yagizmdemir" title="Tests">⚠️</a></td>
-    </tr>
-  </tbody>
-</table>
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
