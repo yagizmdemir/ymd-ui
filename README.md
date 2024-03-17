@@ -47,6 +47,22 @@ import { Button } from "ymd-ui";
 </Button>
 ```
 
+#### Props
+```md
+- className: string,
+- style: object,
+- children: React.ReactNode,
+- variant: string ('text' | 'filled' | 'outlined'),
+- color: string ('primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'body'),
+- size: string ('medium' | 'small' | 'large'),
+- fullWidth: boolean ,
+- type: string ('button' | 'submit' | 'reset'),
+- onClick: function,
+- href: string
+```
+
+--------------
+
 ### Container, Grid & GridItem 
 
 ```js
@@ -63,47 +79,6 @@ import { Container, Grid, GridItem } from "ymd-ui";
 ```
 
 Now you are ready to use the imported YMD UI components within your component hierarchy defined in the render method.
-<!-- 
-## About the Project
-
-This library contains React Bootstrap components that favor composition and control. The library does not depend on jQuery or Bootstrap javascript. However, [Poppers.js](https://popper.js.org/) via [react-popper](https://github.com/popperjs/react-popper) is relied upon for advanced positioning of content like Tooltips, Popovers, and auto-flipping Dropdowns.
-
-There are a few core concepts to understand in order to make the most out of this library.
-
-1. Your content is expected to be composed via props.children rather than using named props to pass in Components.
-
-    ```js
-    // Content passed in via props
-    const Example = (props) => {
-      return (
-        <p>This is a tooltip <TooltipTrigger tooltip={TooltipContent}>example</TooltipTrigger>!</p>
-      );
-    }
-
-    // Content passed in as children (Preferred)
-    const PreferredExample = (props) => {
-      return (
-        <p>
-          This is a <a href="#" id="TooltipExample">tooltip</a> example.
-          <Tooltip target="TooltipExample">
-            <TooltipContent/>
-          </Tooltip>
-        </p>
-      );
-    }
-    ```
-
-2. Attributes in this library are used to pass in state, conveniently apply modifier classes, enable advanced functionality (like tether), or automatically include non-content based elements.
-
-    Examples:
-
-    - `isOpen` - current state for items like dropdown, popover, tooltip
-    - `toggle` - callback for toggling `isOpen` in the controlling component
-    - `color` - applies color classes, ex: `<Button color="danger"/>`
-    - `size` - for controlling size classes. ex: `<Button size="sm"/>`
-    - `tag` - customize component output by passing in an element name or Component
-    - boolean based props (attributes) when possible for alternative style classes or `visually-hidden` content -->
-
 
 ### Want to contribute?
 You can read and follow our [CONTRIBUTING.md](CONTRIBUTING.md) and report it using
