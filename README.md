@@ -35,14 +35,14 @@ Import YMD UI SCSS in the ```src/index.js``` file:
 import 'ymd-ui/dist/css/ymd-ui.scss'
 ```
 
-Import required reactstrap components within ```src/App.js``` file or your custom component files:
+Import required YMD UI components within ```src/App.js``` file or your custom component files:
 
 ### Button
 
 ```js
 import { Button } from "ymd-ui";
 
-<Button type="button" color="primary" variant="text" size="medium" fullWidth onClick={() => {console.log('Hello World!')}}>
+<Button type="button" color="primary" variant="text" size="medium" fullWidth href='/about' onClick={() => {console.log('Hello World!')}}>
     My Button
 </Button>
 ```
