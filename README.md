@@ -305,7 +305,7 @@ Select has it own props. These are;
 
 ```js
 import React, { useState } from 'react';
-import { CustomRadio } from 'ymd-ui';
+import { CustomSelect } from 'ymd-ui';
 
 const [options, setOptions] = useState([
     {
@@ -326,7 +326,7 @@ const handleChangeSelect = (e) => {
     console.log(e)
 }
 
-<CustomRadio
+<CustomSelect
     options={options}
     placeHolder='Please select...'
     onChange={(e) => handleChangeSelect(e)}
