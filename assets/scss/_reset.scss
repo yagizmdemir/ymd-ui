@@ -14,8 +14,8 @@ body {
     position: relative;
     text-rendering: optimizeSpeed;
     width: 100%;
-    background-color: map-get($colors, body, main);
-    color: map-get($colors, body, contrast);
+    background-color: map-get($colors, body, contrast);
+    color: map-get($colors, body, main);
 }
 *,
 :after,
