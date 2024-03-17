@@ -1,7 +1,7 @@
 {
     "name": "ymd-ui",
     "author": "Yağız Mehmet Demir <yagizmdemir@gmail.com>",
-    "version": "1.0.28",
+    "version": "1.0.29",
     "license": "MIT",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
