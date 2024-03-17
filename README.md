@@ -19,7 +19,7 @@ cd my-app/
 npm start
 ``` 
 
-Then open [http://localhost:3000/](http://localhost:3000/) to see your app. The initial structure of your app is setup. Next, let's [add reactstrap and bootstrap](#adding-ymd-ui).
+Then open [http://localhost:3000/](http://localhost:3000/) to see your app. The initial structure of your app is setup. Next, let's [add YMD UI](#adding-ymd-ui).
 
 ### Adding YMD UI
 
@@ -29,10 +29,22 @@ Install YMD UI from NPM:
 npm i ymd-ui
 ```
 
-Import YMD UI CSS in the ```src/index.js``` file:
+Import YMD UI SCSS in the ```src/index.js``` file:
 
 ```js
-import 'ymd-ui/dist/css/ymd-ui.css'
+import 'ymd-ui/dist/css/ymd-ui.scss'
+```
+
+Import required reactstrap components within ```src/App.js``` file or your custom component files:
+
+### Button
+
+```js
+import { Button } from "ymd-ui";
+
+<Button type="button" color="primary" variant="text" size="medium" fullWidth onClick={() => {console.log('Hello World!')}}>
+    My Button
+</Button>
 ```
 
 Import required reactstrap components within ```src/App.js``` file or your custom component files:
@@ -87,20 +99,3 @@ There are a few core concepts to understand in order to make the most out of thi
 ### Want to contribute?
 You can read and follow our [CONTRIBUTING.md](CONTRIBUTING.md) and report it using
 [GitHub Issues](https://github.com/yagizmdemir/ymd-ui/issues)! for reporting bugs, suggesting enhancements, bugfixes, new features and extras are welcome.
-
-
-## Contributors ✨
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<table>
-  <tbody>
-    <tr>
-      <td align="center"><a href="https://yagizmdemir.com/"><img src="https://avatars.githubusercontent.com/u/87898868?v=4?s=100" width="100px;" alt="Yağız Mehmet Demir"/><br /><sub><b>Yağız Mehmet Demir</b></sub></a><br /><a href="#infra-yagizmdemir" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/yagizmdemir/ymd-ui/commits?author=yagizmdemir" title="Code">💻</a> <a href="https://github.com/yagizmdemir/ymd-ui/issues?q=author%3Ayagizmdemir" title="Bug reports">🐛</a> <a href="https://github.com/yagizmdemir/ymd-ui/commits?author=yagizmdemir" title="Documentation">📖</a> <a href="#example-yagizmdemir" title="Examples">💡</a> <a href="#maintenance-yagizmdemir" title="Maintenance">🚧</a> <a href="https://github.com/yagizmdemir/ymd-ui/commits?author=yagizmdemir" title="Tests">⚠️</a></td>
-    </tr>
-  </tbody>
-</table>
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

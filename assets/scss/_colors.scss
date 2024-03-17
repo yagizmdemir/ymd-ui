@@ -1,0 +1,17 @@
+@each $color-name, $color-values in $colors {
+    .text-#{$color-name} {
+        color: map-get($colors, $color-name, main);
+    }
+    .bg-#{$color-name} {
+        background-color: map-get($colors, $color-name, main);
+        color: map-get($colors, $color-name, contrast);
+    }
+    .bg-light-#{$color-name} {
+        background-color: rgba(map-get($colors, $color-name, main), .1);
+        color: map-get($colors, $color-name, main);
+    }
+    .bg-gradient-#{$color-name} {
+        background: map-get($colors, $color-name, gradient);
+        color: map-get($colors, $color-name, contrast);
+    }
+}
