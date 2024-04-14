@@ -5,19 +5,19 @@ $colors: (
         gradient: linear-gradient(270deg, #fd4f00 0%, #ff8308 100%),
         contrast: #ffffff
     ),
-    blue: (
+    info: (
         main: #08aeea,
         light: #17cec4,
         gradient: linear-gradient(270deg, #08aeea, #17cec4),
         contrast: #ffffff
     ),
-    green: (
+    success: (
         main: #59a822,
         light: #d5e9c7,
         gradient: linear-gradient(270deg, #59a822, #9eda74),
         contrast: #ffffff
     ),
-    red: (
+    danger: (
         main: #e20714,
         light: #f7c1c4,
         gradient: linear-gradient(270deg, #e20714, #fa656d),
@@ -29,7 +29,7 @@ $colors: (
         gradient: linear-gradient(270deg, #870eff, #c587ff),
         contrast: #ffffff
     ),
-    gray: (
+    secondary: (
         main: #9ca1ae,
         light: #e6e7ea,
         gradient: linear-gradient(270deg, #9ca1ae, #d2d2d2),

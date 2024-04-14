@@ -1,14 +1,14 @@
-import { IDefault } from '@/interfaces/default.interface'
-import React from 'react'
+import React, { HTMLAttributes } from 'react';
 
-export const Container = ({ children, className, style }: IDefault) => {
-    return (
-        <div className={`ymd-container ${className}`} style={style}>
-            {children}
-        </div>
-    )
-}
-
-Container.defaultProps = {
-    className: ''
+export const Container = ({
+  children,
+  className = '',
+  style,
+  ...rest
+}: HTMLAttributes<HTMLElement>) => {
+  return (
+    <div className={`ymd-container ${className}`} style={style} {...rest}>
+      {children}
+    </div>
+  );
 };

@@ -1,0 +1,123 @@
+.ymd-autocomplete {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        label {
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid map-get($colors, secondary, light);
+            border-radius: $radius;
+            outline: none;
+        }
+
+        .ymd-autocomplete-chevron {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 20px;
+            transition: transform 350ms ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                width: 100%;
+                color: map-get($colors, secondary, main);
+            }
+            &.expanded {
+                transform: rotate(0.5turn);
+            }
+        }
+
+        .ymd-autocomplete-clear {
+            position: absolute;
+            bottom: 6px;
+            right: 35px;
+            width: 20px;
+            transition: all 350ms ease;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            opacity: 0;
+            pointer-events: none;
+            svg {
+                width: 100%;
+                color: map-get($colors, secondary, main);
+            }
+        }
+        &:hover {
+            .ymd-autocomplete-clear {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 8px;
+
+            li {
+                border-radius: $radius;
+                padding: 0.5rem;
+                cursor: pointer;
+                transition: all 350ms ease;
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+                &:hover {
+                    background-color: rgba($color: map-get($colors, secondary, light), $alpha: 0.3);
+                }
+
+                &.selected {
+                    position: relative;
+                    background-color: rgba($color: map-get($colors, primary, main), $alpha: 0.05);
+                    color: map-get($colors, primary, main);
+                    font-weight: 500;
+                    .ymd-autocomplete-checkmark {
+                        position: absolute;
+                        color: map-get($colors, primary, main);
+                        right: 8px;
+                        top: 5px;
+                        width: 15px;
+                        height: 15px;
+                        svg {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-suggestions {
+        position: absolute;
+        width: 100%;
+        background: map-get($colors, body, contrast);
+        top: calc(100% + 4px);
+        border: solid 1px map-get($colors, secondary, light);
+        border-radius: 6px;
+        max-height: 200px;
+        overflow-y: auto;
+        animation: fade-in 0.2s ease-in forwards;
+        z-index: 9;
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+        &::-webkit-scrollbar-track {
+            border-top-right-radius: $radius;
+            border-bottom-right-radius: $radius;
+            background: map-get($colors, secondary, light);
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: $radius;
+            background: map-get($colors, secondary, main);
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: map-get($colors, secondary, main);
+        }
+    }
+}

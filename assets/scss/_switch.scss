@@ -1,0 +1,109 @@
+.ymd-switch {
+    position: relative;
+    display: inline-block;
+    .ymd-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 34px;
+        &:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+    }
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        &:checked + .ymd-slider:before {
+            -webkit-transform: translateX(20px);
+            -ms-transform: translateX(20px);
+            transform: translateX(20px);
+        }
+    }
+    @each $color-name, $color-values in $colors {
+        &.ymd-switch-#{$color-name} {
+            .ymd-slider::before {
+                background-color: map-get($colors, $color-name, contrast);
+            }
+            input {
+                &:checked + .ymd-slider {
+                    background-color: map-get($colors, $color-name, main);
+                }
+                &:focus + .ymd-slider {
+                    box-shadow: 0 0 1px map-get($colors, $color-name, main);
+                }
+            }
+        }
+    }
+    &.ymd-switch-large {
+        width: 50px;
+        height: 30px;
+        .ymd-slider {
+            &:before {
+                height: 26px;
+                width: 26px;
+                left: 2px;
+                bottom: 2px;
+            }
+        }
+        input {
+            &:checked + .ymd-slider:before {
+                -webkit-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+        }
+    }
+    &.ymd-switch-medium {
+        width: 45px;
+        height: 25px;
+        .ymd-slider {
+            &:before {
+                height: 21px;
+                width: 21px;
+                left: 2px;
+                bottom: 2px;
+            }
+        }
+        input {
+            &:checked + .ymd-slider:before {
+                -webkit-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+        }
+    }
+    &.ymd-switch-small {
+        width: 40px;
+        height: 20px;
+        .ymd-slider {
+            &:before {
+                height: 16px;
+                width: 16px;
+                left: 2px;
+                bottom: 2px;
+            }
+        }
+        input {
+            &:checked + .ymd-slider:before {
+                -webkit-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+        }
+    }
+}

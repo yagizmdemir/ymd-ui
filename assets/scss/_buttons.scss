@@ -82,7 +82,10 @@
                 .ymd-droplet {
                     background-color: map-get($colors, $color-name, contrast);
                 }
-                &:hover {
+                &:hover,
+                &.active,
+                &:active,
+                &:focus {
                     background-color: rgba(map-get($colors, $color-name, main), 1);
                 }
             }
@@ -111,7 +114,10 @@
                 .ymd-droplet {
                     background-color: map-get($colors, $color-name, main);
                 }
-                &:hover {
+                &:hover,
+                &.active,
+                &:active,
+                &:focus {
                     background-color: rgba(map-get($colors, $color-name, main), 0.07);
                 }
             }
@@ -125,7 +131,10 @@
                 .ymd-droplet {
                     background-color: map-get($colors, $color-name, main);
                 }
-                &:hover {
+                &:hover,
+                &.active,
+                &:active,
+                &:focus {
                     border: 1px solid rgba(map-get($colors, $color-name, main), 1);
                     background-color: rgba(map-get($colors, $color-name, main), 0.08);
                 }
