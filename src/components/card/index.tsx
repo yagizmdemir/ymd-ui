@@ -25,3 +25,7 @@ const CardBody = ({ children, className, style, ...rest }: HTMLAttributes<HTMLEl
 };
 
 export { Card, CardHeader, CardBody };
+
+Card.displayName = "YMDUI.Card"
+CardHeader.displayName = "YMDUI.CardHeader"
+CardBody.displayName = "YMDUI.CardBody"

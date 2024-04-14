@@ -16,7 +16,7 @@ interface ICheckbox {
   options: ICheckoxOption[];
 }
 
-const CustomRadio = ({ name, label, helperText, options }: ICheckbox) => {
+const Radio = ({ name, label, helperText, options }: ICheckbox) => {
   return (
     <div className="ymd-form-group">
       <div className="label-area">
@@ -41,4 +41,6 @@ const CustomRadio = ({ name, label, helperText, options }: ICheckbox) => {
   );
 };
 
-export default CustomRadio;
+export default Radio;
+
+Radio.displayName = 'YMDUI.Switch';

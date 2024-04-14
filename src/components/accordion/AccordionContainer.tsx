@@ -18,3 +18,5 @@ const AccordionContainer = ({
 };
 
 export default AccordionContainer;
+
+AccordionContainer.displayName = "YMDUI.AccordionContainer"

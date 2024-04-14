@@ -258,3 +258,6 @@ const AutocompleteItem = ({ children, value}: { children: ReactNode; value: stri
 };
 
 export { Autocomplete, AutocompleteItem };
+
+Autocomplete.displayName = "YMDUI.Autocomplete"
+AutocompleteItem.displayName = "YMDUI.AutocompleteItem"

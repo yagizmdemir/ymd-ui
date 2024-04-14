@@ -48,3 +48,5 @@ export const PhoneInput = ({
     </div>
   );
 };
+
+PhoneInput.displayName = "YMDUI.PhoneInput"

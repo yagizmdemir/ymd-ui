@@ -204,23 +204,6 @@ import { Button } from 'ymd-ui';
 </Button>;
 ```
 
-#### Props
-
-```md
-- className: string
-- style: object
-- children: React.ReactNode
-- variant: string ('text' | 'filled' | 'outlined')
-- color: string ('primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'body')
-- size: string ('medium' | 'small' | 'large')
-- fullWidth: boolean
-- type: string ('button' | 'submit' | 'reset')
-- onClick: function
-- href: string
-```
-
----
-
 ### Container, Grid & GridItem
 
 ```js
@@ -246,20 +229,7 @@ import { Container, Grid, GridItem } from 'ymd-ui';
 
 ---
 
-### From Elements
-
-All form elements accept the following props. In addition, some elements have their own specific props. These props are listed under their respective headings.
-
-```md
-- name: string
-- label: string
-- helperText: string
-- onChange: function
-- onBlur: function
-- value: string
-- placeholder: string
-- pattern: string
-```
+## From Elements
 
 #### Basic Input
 
@@ -286,11 +256,11 @@ const [value, setValue] = useState('');
 
 ```js
 import React, { useState } from 'react';
-import { CustomColor } from 'ymd-ui';
+import { ColorInput } from 'ymd-ui';
 
 const [value, setValue] = useState('');
 
-<CustomColor
+<ColorInput
   name={'color_input'}
   label={'Color Input'}
   helperText={'Color Input Helper Text'}
@@ -305,11 +275,11 @@ const [value, setValue] = useState('');
 
 ```js
 import React, { useState } from 'react';
-import { CustomPassword } from 'ymd-ui';
+import { PasswordInput } from 'ymd-ui';
 
 const [value, setValue] = useState('');
 
-<CustomPassword
+<PasswordInput
   name={'password_input'}
   label={'Password'}
   helperText={<a href="/forget-password">Forget Password?</a>}
@@ -324,11 +294,11 @@ const [value, setValue] = useState('');
 
 ```js
 import React, { useState } from 'react';
-import { CustomPhone } from 'ymd-ui';
+import { PhoneInput } from 'ymd-ui';
 
 const [value, setValue] = useState('');
 
-<CustomPhone
+<PhoneInput
   name={'phone_input'}
   label={'Phone'}
   onChange={(e) => setValue(e.target.value)}
@@ -339,145 +309,78 @@ const [value, setValue] = useState('');
 />;
 ```
 
-#### Checkbox
-
-Checkbox has it own props. These are;
-
-```md
-- name: string
-- label: string
-- helperText: string
-- onChange: function
-- value: string
-- options: [
-    {
-        label: string
-        value: string
-        checked: boolean
-    }
-  ];
-```
+#### Autocomplete
 
 ```js
 import React, { useState } from 'react';
-import { CustomCheckbox } from 'ymd-ui';
+import { Autocomplete, AutocompleteItem } from "ymd-ui";
 
-const [value, setValue] = useState();
-
-<CustomCheckbox
-  name={'checkbox'}
-  label={'Checkbox'}
-  value={value}
-  onChange={(e) => console.log(e.value)}
-  options={[
-    {
-      label: 'Checkbox 1',
-      value: 'check_1',
-      checked: false,
-    },
-    {
-      label: 'Checkbox 2',
-      value: 'check_2',
-      checked: true,
-    },
-  ]}
-/>;
+<Autocomplete onChange={(e) => console.log(e)} label="Search Value">
+    <AutocompleteItem value="value1">Option 1</AutocompleteItem>
+    <AutocompleteItem value="value2">Option 2</AutocompleteItem>
+    <AutocompleteItem value="value3">Option 3</AutocompleteItem>
+</Autocomplete>
 ```
 
-#### Radio
-
-Radio has it own props. These are;
-
-```md
-- name: string
-- label: string
-- helperText: string
-- onChange: function
-- value: string
-- options: [
-    {
-        label: string
-        value: string
-        checked: boolean
-    }
-  ];
-```
-
-```js
-import React, { useState } from 'react';
-import { CustomRadio } from 'ymd-ui';
-
-const [value, setValue] = useState();
-
-<CustomRadio
-  name={'radio'}
-  label={'Radio'}
-  value={value}
-  onChange={(e) => console.log(e.value)}
-  options={[
-    {
-      label: 'Radio 1',
-      value: 'option_1',
-      checked: false,
-    },
-    {
-      label: 'Radio 2',
-      value: 'option_2',
-      checked: true,
-    },
-  ]}
-/>;
-```
 
 #### Select
 
-Select has it own props. These are;
+```js
+import React, { useState } from 'react';
+import { Select, SelectOption } from "ymd-ui";
 
-```md
-- placeHolder: string
-- options: [
-    {
-        value: string;
-        label: string;
-    }
-  ]
-- isMulti: boolean
-- isSearchable: boolean
-- onChange: function;
-- align: string
+<Select onChange={(e) => console.log(e)} isMulti placeHolder="Please select">
+  <SelectOption label="Option 1" value="value1">Option 1</SelectOption>
+  <SelectOption label="Option 2" value="value2">Option 2</SelectOption>
+  <SelectOption label="Option 3" value="value3">Option 3</SelectOption>
+</Select>
 ```
+
+#### Modal
 
 ```js
 import React, { useState } from 'react';
-import { CustomSelect } from 'ymd-ui';
+import { Modal, ModalHeader, ModalContent} from "ymd-ui";
 
-const [options, setOptions] = useState([
-    {
-      label: "Option 1",
-      value: "opt1",
-    },
-    {
-      label: "Option 2",
-      value: "opt2",
-    },
-    {
-      label: "Option 3",
-      value: "opt3",
-    },
-])
+const [showModal, setShowModal] = useState(false);
 
-const handleChangeSelect = (e) => {
-    console.log(e)
-}
+<Button onClick={() => setShowModal(true)}>Show Modal</Button>
+<Modal onClose={() => setShowModal(false)} isOpen={showModal}>
+    <ModalHeader>Modal header</ModalHeader>
+    <ModalContent>
+        Test modal
+    </ModalContent>
+</Modal>
+```
 
-<CustomSelect
-    options={options}
-    placeHolder='Please select...'
-    onChange={(e) => handleChangeSelect(e)}
-    align='buttom'
-    isSearchable
-    isMulti
-/>;
+#### Tooltip
+
+```js
+import React, { useState } from 'react';
+import { Tooltip } from "ymd-ui";
+
+<Tooltip placement="bottom" content="Lorem ipsum dolor sit amet">
+    HOVER ME!
+</Tooltip>
+```
+
+#### Skeleton
+
+```js
+import React, { useState } from 'react';
+import { Skeleton } from "ymd-ui";
+
+<Skeleton>Sekeleton Test</Skeleton>
+```
+#### ClickOutside
+
+```js
+import React, { useState } from 'react';
+import { ClickOutside } from "ymd-ui";
+
+<ClickOutside onClickOutside={(e) => console.log(e)}>
+    Click outside
+</ClickOutside>
 ```
 
 Now you are ready to use the imported YMD UI components within your component hierarchy defined in the render method.

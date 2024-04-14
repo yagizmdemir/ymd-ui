@@ -77,3 +77,5 @@ export const Button = ({
     </button>
   );
 };
+
+Button.displayName = "YMDUI.Button"

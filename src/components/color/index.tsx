@@ -50,3 +50,5 @@ export const ColorInput = ({
     </div>
   );
 };
+
+ColorInput.displayName = "YMDUI.ColorInput"

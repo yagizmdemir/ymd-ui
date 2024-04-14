@@ -31,3 +31,5 @@ const Typography = ({
 };
 
 export default Typography;
+
+Typography.displayName = "YMDUI.Typography"

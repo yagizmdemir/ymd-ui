@@ -31,3 +31,5 @@ export const GridItem = ({
     </div>
   );
 };
+
+GridItem.displayName = "YMDUI.GridItem"

@@ -81,3 +81,5 @@ export const PasswordInput = ({
     </div>
   );
 };
+
+PasswordInput.displayName = "YMDUI.PasswordInput"

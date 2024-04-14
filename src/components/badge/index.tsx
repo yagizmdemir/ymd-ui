@@ -36,3 +36,5 @@ const Badge = ({
 };
 
 export default Badge;
+
+Badge.displayName = "YMDUI.Badge"

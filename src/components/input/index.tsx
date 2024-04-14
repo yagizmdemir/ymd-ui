@@ -49,3 +49,5 @@ export const CustomInput = ({
     </div>
   );
 };
+
+CustomInput.displayName = "YMDUI.CustomInput"

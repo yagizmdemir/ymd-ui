@@ -48,3 +48,5 @@ const AccordionItem = ({
 };
 
 export default AccordionItem;
+
+AccordionItem.displayName = "YMDUI.AccordionItem"

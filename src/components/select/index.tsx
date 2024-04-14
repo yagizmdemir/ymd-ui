@@ -167,3 +167,6 @@ const SelectOption = ({ children, value, label }: OptionType) => {
 };
 
 export { Select, SelectOption };
+
+Select.displayName = "YMDUI.Select"
+SelectOption.displayName = "YMDUI.SelectOption"

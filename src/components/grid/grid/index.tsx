@@ -12,3 +12,5 @@ export const Grid = ({
     </div>
   );
 };
+
+Grid.displayName = "YMDUI.Grid"
