@@ -1,4 +1,4 @@
-// @import "variables";
+@import "variables";
 @import "keyframes";
 @import "reset";
 @import "typography";
@@ -6,5 +6,16 @@
 @import "grid";
 
 //Components
-@import 'buttons';
-@import 'form';
+@import './autocomplete';
+@import './badge';
+@import './buttons';
+@import './card';
+@import './checkbox';
+@import './colors';
+@import './form';
+@import './grid';
+@import './modal';
+@import './select';
+@import './skeleton';
+@import './switch';
+@import './tooltip';

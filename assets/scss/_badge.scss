@@ -1,0 +1,43 @@
+.ymd-badge {
+    &-outher {
+        position: relative;
+    }
+    &-content {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 6px;
+        width: max-content;
+        height: auto;
+        border-radius: 9999px;
+        place-content: center;
+        user-select: none;
+        transform-origin: center;
+        -webkit-font-smoothing: auto;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+    &-vertical {
+        &-top {
+            top: -12px;
+        }
+        &-bottom {
+            bottom: -12px;
+        }
+    }
+    &-horizontal {
+        &-right {
+            right: -12px;
+        }
+        &-left {
+            left: -12px;
+        }
+    }
+    @each $color-name, $color-values in $colors {
+        &-#{$color-name} {
+            background-color: map-get($colors, $color-name, main);
+            color: map-get($colors, $color-name, contrast);
+        }
+    }
+}

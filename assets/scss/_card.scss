@@ -1,0 +1,16 @@
+.ymd-card {
+    display: flex;
+    flex-direction: column;
+    background-color: map-get($colors, body, light);
+    padding: 12px;
+    border-radius: $radius;
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0 12px 0;
+    }
+    &-body {
+        padding: 12px;
+    }
+}

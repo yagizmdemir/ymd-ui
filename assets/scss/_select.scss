@@ -1,0 +1,136 @@
+.ymd-dropdown {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .dropdown-input {
+            width: 100%;
+            font-weight: 400;
+            line-height: 1.5;
+            background: transparent;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid map-get($colors, secondary, light);
+            border-radius: $radius;
+            outline: none;
+            height: 42px;
+            cursor: pointer;
+            .placeholder {
+                color: map-get($colors, secondary, main);
+            }
+        }
+        .ymd-dropdown-chevron {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 20px;
+            transition: transform 350ms ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                width: 100%;
+                color: map-get($colors, secondary, main);
+            }
+            &.expanded {
+                transform: rotate(0.5turn);
+            }
+        }
+        .dropdown-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .dropdown-tag-item {
+            background-color: map-get($colors, primary, main);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 2px 4px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-tag-close {
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+        }
+    }
+    &-options {
+        position: absolute;
+        width: 100%;
+        background: map-get($colors, body, contrast);
+        top: calc(100% + 4px);
+        border: solid 1px map-get($colors, secondary, light);
+        border-radius: 6px;
+        max-height: 200px;
+        overflow-y: auto;
+        animation: fade-in 0.2s ease-in forwards;
+        z-index: 9;
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+        &::-webkit-scrollbar-track {
+            border-top-right-radius: $radius;
+            border-bottom-right-radius: $radius;
+            background: map-get($colors, secondary, light);
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: $radius;
+            background: map-get($colors, secondary, main);
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: map-get($colors, secondary, main);
+        }
+        ul {
+            list-style-type: none;
+            padding: 8px;
+
+            li {
+                border-radius: $radius;
+                padding: 0.5rem;
+                cursor: pointer;
+                transition: all 350ms ease;
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+                &:hover {
+                    background-color: rgba($color: map-get($colors, secondary, light), $alpha: 0.3);
+                }
+
+                .ymd-dropdown-checkmark {
+                    position: absolute;
+                    color: map-get($colors, primary, main);
+                    right: 8px;
+                    top: 5px;
+                    width: 15px;
+                    height: 15px;
+                    svg {
+                        width: 100%;
+                    }
+                }
+
+                &.selected {
+                    position: relative;
+                    background-color: rgba($color: map-get($colors, primary, main), $alpha: 0.05);
+                    color: map-get($colors, primary, main);
+                    font-weight: 500;
+                    .ymd-dropdown-checkmark {
+                        position: absolute;
+                        color: map-get($colors, primary, main);
+                        right: 8px;
+                        top: 5px;
+                        width: 15px;
+                        height: 15px;
+                        svg {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

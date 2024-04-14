@@ -1,0 +1,39 @@
+.ymd-tooltip {
+    position: relative;
+    width: fit-content;
+    &-content {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: max-content;
+        max-width: 350px;
+        border-radius: $radius;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -45px;
+        background: map-get($colors, body, contrast);
+        color: map-get($colors, body, main);
+        scale: 0.95;
+        padding: 8px;
+        filter: drop-shadow(0 0 2px rgba(map-get($colors, body, main), 0.3));
+        animation: fade-out 0.2s ease-in forwards;
+    }
+    &-item {
+        &:hover {
+            + .ymd-tooltip-content {
+                scale: 1;
+                animation: fade-in 0.2s ease-in forwards;
+            }
+        }
+    }
+    &-arrow {
+        display: block;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: -3px;
+        transform: rotate(45deg);
+        background: map-get($colors, body, contrast);
+        left: calc(50% - 7.5px);
+    }
+}

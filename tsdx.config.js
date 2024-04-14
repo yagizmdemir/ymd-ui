@@ -2,6 +2,7 @@ const alias = require('@rollup/plugin-alias');
 const copy = require('rollup-plugin-copy');
 
 module.exports = {
+  ignoreWarnings: ['use'],
   rollup(config, options) {
     config.plugins.push({
       plugins: [
@@ -14,7 +15,7 @@ module.exports = {
     config.plugins.push(
       copy({
         targets: [{ src: 'assets/scss/**', dest: 'dist/scss' }],
-        copySync: true
+        copySync: true,
       })
     );
 
